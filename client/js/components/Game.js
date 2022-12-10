@@ -1,11 +1,11 @@
-import * as constants from '../constants.js';
+import * as CT from '../constants.js';
 import * as Entity from '../models/Entity.js';
 import * as PlayerHelpers from '../helpers/PlayerHelpers.js';
 import * as BulletHelpers from '../helpers/BulletHelpers.js';
 import img from '../models/Images.js';
 
 export const start = (socket) => {
-    var ctx = document.querySelector('#ctx').getContext('2d');
+    var ctx = CT.ctx
     ctx.font = '30px Calibri';
     
     var Player = function (initPack) {
@@ -90,8 +90,8 @@ export const start = (socket) => {
     }, 1000/60);
     
     var drawMap = function () {
-        var x = constants.WIDTH /2 - Player.list[selfId].x;
-        var y = constants.HEIGHT /2 - Player.list[selfId].y;
+        var x = CT.width /2 - Player.list[selfId].x;
+        var y = CT.height /2 - Player.list[selfId].y;
         ctx.drawImage(img.map, x, y);
     };
     
