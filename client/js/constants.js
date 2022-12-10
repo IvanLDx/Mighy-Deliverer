@@ -1,3 +1,3 @@
-export const WIDTH = 500;
-export const HEIGHT = 500;
-export const CTX = document.querySelector('#ctx').getContext('2d');
+export const width = 500;
+export const height = 500;
+export const ctx = document.querySelector('#ctx').getContext('2d');
