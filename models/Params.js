@@ -5,7 +5,6 @@ var Constants = require('../scripts/Constants');
 function Params(socket, initPack, removePack, SOCKET_LIST) {
     this.Player = require('./Player');
     this.socket = socket;
-    this.Bullet = require('./Bullet');
     this.initPack = initPack;
     this.removePack = removePack;
     this.USERS = Constants.USERS;

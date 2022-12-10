@@ -1,9 +1,9 @@
 var Entity = require('../models/Entity');
 var PlayerHelpers = require('../scripts/helpers/PlayerHelpers');
 
-var Player = function (id, Bullet, initPack) {
+var Player = function (id, initPack) {
     var self = Entity.Base();
-    self = Entity.Player(self, id, Bullet, initPack);
+    self = Entity.Player(self, id);
 
     Player.list[id] = self;
 

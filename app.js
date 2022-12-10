@@ -1,20 +1,18 @@
 var Server = require('./scripts/Server');
 var io = require('socket.io')(Server.self(), {});
 var Player = require('./models/Player');
-var Bullet = require('./models/Bullet');
 Server.start(__dirname);
 
 var SOCKET_LIST = {};
 
 io.sockets.on('connection', socket => Server.socketsConnection(socket, initPack, removePack, SOCKET_LIST));
 
-var initPack = { player: [], bullet: [] };
-var removePack = { player: [], bullet: [] };
+var initPack = { player: []};
+var removePack = { player: []};
 
 setInterval(function() {
     var pack = {
-        player: Player.update(),
-        bullet: Bullet.update(removePack)
+        player: Player.update()
     };
 
     for (var i in SOCKET_LIST) {
@@ -25,7 +23,5 @@ setInterval(function() {
     }
 
     initPack.player = [];
-    initPack.bullet = [];
     removePack.player = [];
-    removePack.bullet = [];
 }, 1000/25);

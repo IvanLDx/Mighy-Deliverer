@@ -1,19 +1,27 @@
-function isValidPassword (params) {
-    return params.USERS[params.data.username] === params.data.password;
+var Player = require('../../models/Player');
+var CT = require('../Constants');
+
+function isValidPassword (data) {
+    return CT.USERS[data.username] === data.password;
 };
 
 var isUsernameTaken = function (params) {
-    return params.USERS[params.data.username];
+    return params.CT.USERS[params.data.username];
 }
 
 var addUser = function (data) {
-    USERS[data.username] = data.password;
+    CT.USERS[data.username] = data.password;
 }
 
+/**
+ * 
+ * @param {*} data 
+ * @param {*} params 
+ */
 const signIn = (data, params) => {
     params.data = data;
-    if (isValidPassword(params)) {
-        params.Player.onConnect(params);
+    if (isValidPassword(data)) {
+        Player.onConnect(params);
         params.socket.emit('signInResponse', { success: true });
     } else {
         params.socket.emit('signInResponse', { success: false });
@@ -47,7 +55,7 @@ const sendMsgToServer = (data, params) => {
 }
 
 const evalServer = (data, params) => {
-    if (!params.DEBUG) {
+    if (!CT.DEBUG) {
         return;
     }
     var res = eval(params[data]);

@@ -19,19 +19,15 @@ function onKeyPress(player, data) {
 var Player = {};
 
 Player.onConnect = function (params) {
-    var player = params.Player(params.socket.id, params.Bullet, params.initPack);
+    var player = params.Player(params.socket.id, params.initPack);
     params.socket.on('keyPress', data => onKeyPress(player, data));
 
     var players = [];
     ForIn(params.Player.list, item => players.push(item.getInitPack()));
 
-    var bullets = [];
-    ForIn(params.Bullet.list, item => bullets.push(item.getInitPack()));
-
     var context = {
         selfId: params.socket.id,
-        player: params.Player.getAllInitPack(),
-        bullet: params.Bullet.getAllInitPack()
+        player: params.Player.getAllInitPack()
     }
 
     params.socket.emit('init', context);
