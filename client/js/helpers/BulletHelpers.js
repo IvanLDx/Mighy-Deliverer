@@ -1,7 +1,8 @@
 import * as CT from '../constants.js';
 import img from '../models/Images.js';
+import Player from '../models/Player.js';
 
-export const draw = (self, Player, selfId) => {
+export const draw = (self, selfId) => {
     var width = img.bullet.width / 2;
     var height = img.bullet.height / 2;
 
